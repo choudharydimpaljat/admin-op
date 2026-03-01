@@ -930,14 +930,14 @@ export default function Index() {
   const [setupTab, setSetupTab] = useState("paste");
   const [setupPaste, setSetupPaste] = useState("");
   const [setupForm, setSetupForm] = useState({
-    apiKey: "",
-    authDomain: "",
-    databaseURL: "",
-    projectId: "",
-    storageBucket: "",
-    messagingSenderId: "",
-    appId: "",
-    adminEmail: "",
+    apiKey: DEFAULT_CONFIG.fc.apiKey,
+    authDomain: DEFAULT_CONFIG.fc.authDomain,
+    databaseURL: DEFAULT_CONFIG.fc.databaseURL,
+    projectId: DEFAULT_CONFIG.fc.projectId,
+    storageBucket: DEFAULT_CONFIG.fc.storageBucket,
+    messagingSenderId: DEFAULT_CONFIG.fc.messagingSenderId,
+    appId: DEFAULT_CONFIG.fc.appId,
+    adminEmail: DEFAULT_CONFIG.email,
   });
   const [setupError, setSetupError] = useState("");
   const [authUser, setAuthUser] = useState(null);
