@@ -2507,7 +2507,7 @@ export default function Index() {
                     </Text>
                     <View style={{ flexDirection: "row", gap: 6 }}>
                       <TouchableOpacity
-                        style={[styles.actionBtn, styles.editBtn]}
+                        style={[styles.iconBtn, styles.editBtn]}
                         onPress={() => {
                           setEditingCollection(name);
                           setCollectionNameInput(name);
@@ -2517,7 +2517,7 @@ export default function Index() {
                         <MaterialCommunityIcons name="pencil" size={16} color="#3498db" />
                       </TouchableOpacity>
                       <TouchableOpacity
-                        style={[styles.actionBtn, styles.deleteBtn]}
+                        style={[styles.iconBtn, styles.deleteBtn]}
                         onPress={() => handleDeleteCollection(name)}
                       >
                         <MaterialCommunityIcons name="trash-can" size={16} color={THEMES[theme].danger} />
