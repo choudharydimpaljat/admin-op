@@ -288,6 +288,12 @@ const createStyles = (theme) =>
       fontWeight: "700",
       color: theme.accent,
     },
+    statValueActive: {
+      color: theme.success,
+    },
+    statValueExpired: {
+      color: theme.danger,
+    },
     statLabel: {
       fontSize: 9,
       color: theme.textSecondary,
