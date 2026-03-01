@@ -2916,7 +2916,7 @@ export default function Index() {
                   setDaysFilter("all");
                   setDaysOpen(false);
                   if (targetId) {
-                    setTimeout(() => scrollToDevice(targetId), 500);
+                    setTimeout(() => scheduleScrollToDevice(targetId), 500);
                   }
                 }}
               >
