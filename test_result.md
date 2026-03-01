@@ -183,11 +183,14 @@
 ##     file: "frontend/app/index.tsx"
 ##     stuck_count: 0
 ##     priority: "high"
-##     needs_retesting: false
+##     needs_retesting: true
 ##     status_history:
 ##       - working: true
 ##         agent: "testing"
 ##         comment: "✅ Add key modal opens successfully via FAB (floating action button). Modal displays form fields for device ID, key, expiry, user, and other options. Modal is properly sized and accessible on mobile devices. Can be closed using escape key or cancel button."
+##       - working: true
+##         agent: "main"
+##         comment: "Updated modal layout: paste button, equal widths, user/position row, default expiry, larger generator; needs retest."
 ##   - task: "Quick Date Buttons"
 ##     implemented: true
 ##     working: true
