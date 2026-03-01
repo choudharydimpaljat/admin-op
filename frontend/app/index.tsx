@@ -427,6 +427,12 @@ const createStyles = (theme) =>
       borderWidth: 1,
       borderColor: theme.cardBorder,
     },
+    successCard: {
+      flex: 0,
+      width: "100%",
+      alignSelf: "stretch",
+      minHeight: 150,
+    },
     deviceCardExpired: {
       borderColor: theme.danger,
       backgroundColor: theme.expiredCardBg,
