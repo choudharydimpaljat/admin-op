@@ -1932,36 +1932,6 @@ export default function Index() {
                     }
                   />
                 </View>
-                <View style={{ marginTop: 12 }}>
-                  <Text style={styles.inputLabel}>Google Client IDs (optional)</Text>
-                  <TextInput
-                    style={[styles.input, { marginBottom: 8 }]}
-                    placeholder="Web Client ID"
-                    placeholderTextColor={THEMES[theme].textSecondary}
-                    value={setupForm.googleClientId}
-                    onChangeText={(value) =>
-                      setSetupForm((prev) => ({ ...prev, googleClientId: value }))
-                    }
-                  />
-                  <TextInput
-                    style={[styles.input, { marginBottom: 8 }]}
-                    placeholder="Android Client ID"
-                    placeholderTextColor={THEMES[theme].textSecondary}
-                    value={setupForm.googleAndroidClientId}
-                    onChangeText={(value) =>
-                      setSetupForm((prev) => ({ ...prev, googleAndroidClientId: value }))
-                    }
-                  />
-                  <TextInput
-                    style={styles.input}
-                    placeholder="iOS Client ID"
-                    placeholderTextColor={THEMES[theme].textSecondary}
-                    value={setupForm.googleIosClientId}
-                    onChangeText={(value) =>
-                      setSetupForm((prev) => ({ ...prev, googleIosClientId: value }))
-                    }
-                  />
-                </View>
                 {setupError ? <Text style={styles.setupError}>{setupError}</Text> : null}
                 <TouchableOpacity
                   style={[styles.setupBtn, { marginTop: 16 }]}
@@ -1994,18 +1964,6 @@ export default function Index() {
                 <Text style={styles.infoText}
                   >Only authorized administrators can access this panel.</Text>
               </View>
-              <TouchableOpacity
-                style={[styles.primaryBtn, { marginBottom: 12 }]}
-                onPress={handleGoogleLogin}
-                disabled={authLoading}
-              >
-                {authLoading ? (
-                  <ActivityIndicator color="white" />
-                ) : (
-                  <MaterialCommunityIcons name="google" size={18} color="white" />
-                )}
-                <Text style={styles.primaryBtnText}>Sign in with Google</Text>
-              </TouchableOpacity>
               <TextInput
                 style={[styles.input, { marginBottom: 8 }]}
                 placeholder="Admin Email"
