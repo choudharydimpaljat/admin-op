@@ -2648,60 +2648,62 @@ export default function Index() {
                     </Pressable>
                   </View>
                 </View>
-                <View style={{ marginBottom: 10 }}>
-                  <Text style={styles.inputLabel}>User Name</Text>
-                  <TextInput
-                    style={styles.input}
-                    value={keyForm.user}
-                    onChangeText={handleUsernameInput}
-                  />
-                  {userSuggestions.length > 0 && (
-                    <View style={styles.suggestionBox}>
-                      {userSuggestions.map((name) => (
-                        <Pressable
-                          key={name}
-                          style={styles.suggestionItem}
-                          onPress={() => {
-                            setKeyForm((prev) => ({ ...prev, user: name }));
-                            setUserSuggestions([]);
-                          }}
-                        >
-                          <Text style={styles.suggestionText}>{name}</Text>
-                        </Pressable>
-                      ))}
-                    </View>
-                  )}
-                </View>
-                <View style={{ marginBottom: 10 }}>
-                  <Text style={styles.inputLabel}>Position</Text>
-                  <TextInput
-                    style={styles.input}
-                    value={keyForm.position}
-                    onChangeText={handlePositionInput}
-                    placeholder="Insert position or search username"
-                    placeholderTextColor={THEMES[theme].textSecondary}
-                  />
-                  {positionSuggestions.length > 0 && (
-                    <View style={styles.suggestionBox}>
-                      {positionSuggestions.map((item) => (
-                        <Pressable
-                          key={`${item.position}-${item.user}`}
-                          style={styles.suggestionItem}
-                          onPress={() => {
-                            setKeyForm((prev) => ({
-                              ...prev,
-                              position: String(item.position),
-                            }));
-                            setPositionSuggestions([]);
-                          }}
-                        >
-                          <Text style={styles.suggestionText}>
-                            #{item.position} - {item.user}
-                          </Text>
-                        </Pressable>
-                      ))}
-                    </View>
-                  )}
+                <View style={{ flexDirection: "row", gap: 8, marginBottom: 10 }}>
+                  <View style={{ flex: 1 }}>
+                    <Text style={styles.inputLabel}>User Name</Text>
+                    <TextInput
+                      style={styles.input}
+                      value={keyForm.user}
+                      onChangeText={handleUsernameInput}
+                    />
+                    {userSuggestions.length > 0 && (
+                      <View style={styles.suggestionBox}>
+                        {userSuggestions.map((name) => (
+                          <Pressable
+                            key={name}
+                            style={styles.suggestionItem}
+                            onPress={() => {
+                              setKeyForm((prev) => ({ ...prev, user: name }));
+                              setUserSuggestions([]);
+                            }}
+                          >
+                            <Text style={styles.suggestionText}>{name}</Text>
+                          </Pressable>
+                        ))}
+                      </View>
+                    )}
+                  </View>
+                  <View style={{ flex: 1 }}>
+                    <Text style={styles.inputLabel}>Position</Text>
+                    <TextInput
+                      style={styles.input}
+                      value={keyForm.position}
+                      onChangeText={handlePositionInput}
+                      placeholder="Insert position"
+                      placeholderTextColor={THEMES[theme].textSecondary}
+                    />
+                    {positionSuggestions.length > 0 && (
+                      <View style={styles.suggestionBox}>
+                        {positionSuggestions.map((item) => (
+                          <Pressable
+                            key={`${item.position}-${item.user}`}
+                            style={styles.suggestionItem}
+                            onPress={() => {
+                              setKeyForm((prev) => ({
+                                ...prev,
+                                position: String(item.position),
+                              }));
+                              setPositionSuggestions([]);
+                            }}
+                          >
+                            <Text style={styles.suggestionText}>
+                              #{item.position} - {item.user}
+                            </Text>
+                          </Pressable>
+                        ))}
+                      </View>
+                    )}
+                  </View>
                 </View>
                 <Text style={{ fontSize: 10, color: THEMES[theme].textSecondary, marginBottom: 10 }}>
                   Total: {allData.length} keys
