@@ -1872,12 +1872,14 @@ export default function Index() {
         >
           <Text style={styles.positionText}>#{position + 1}</Text>
         </View>
-        <Text
-          style={[styles.deviceId, expired && styles.deviceIdExpired]}
-          numberOfLines={1}
-        >
-          {id}
-        </Text>
+        <Pressable onLongPress={() => handleCopy(id)}>
+          <Text
+            style={[styles.deviceId, expired && styles.deviceIdExpired]}
+            numberOfLines={1}
+          >
+            {id}
+          </Text>
+        </Pressable>
         <Text style={styles.userNameCard} numberOfLines={1}>
           {item.user || "N/A"}
         </Text>
