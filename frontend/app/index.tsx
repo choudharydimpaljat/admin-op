@@ -1481,6 +1481,12 @@ export default function Index() {
     requestAnimationFrame(() => attemptScrollToDevice(id));
   };
 
+  useEffect(() => {
+    if (pendingScrollId.current) {
+      attemptScrollToDevice(pendingScrollId.current);
+    }
+  }, [attemptScrollToDevice]);
+
   const handleSaveJson = async () => {
     try {
       const parsed = JSON.parse(rawJson);
