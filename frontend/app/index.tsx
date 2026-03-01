@@ -2262,6 +2262,10 @@ export default function Index() {
                   setShowTop(event.nativeEvent.contentOffset.y > 200);
                 }}
                 scrollEventThrottle={16}
+                onScrollToIndexFailed={({ index, averageItemLength }) => {
+                  const offset = averageItemLength ? averageItemLength * index : 0;
+                  listRef.current?.scrollToOffset({ offset, animated: true });
+                }}
                 contentContainerStyle={{ paddingBottom: 180 }}
                 style={{ flex: 1 }}
               />
