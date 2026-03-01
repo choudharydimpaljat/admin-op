@@ -243,7 +243,6 @@
 ##   run_ui: true
 ## test_plan:
 ##   current_focus:
-##     - "Login Screen Rendering"
 ##     - "Keys List Empty State"
 ##     - "Add Key Modal"
 ##     - "Quick Date Buttons"
