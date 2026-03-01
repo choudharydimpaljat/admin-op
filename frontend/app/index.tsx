@@ -1580,9 +1580,6 @@ export default function Index() {
       messagingSenderId,
       appId,
       adminEmail,
-      googleClientId,
-      googleAndroidClientId,
-      googleIosClientId,
     } = setupForm;
     if (!apiKey || !authDomain || !databaseURL || !projectId || !adminEmail) {
       setSetupError(
@@ -1605,9 +1602,6 @@ export default function Index() {
         appId,
       },
       email: adminEmail,
-      googleClientId: googleClientId.trim() || undefined,
-      googleAndroidClientId: googleAndroidClientId.trim() || undefined,
-      googleIosClientId: googleIosClientId.trim() || undefined,
     };
     await AsyncStorage.setItem("fb_cfg", JSON.stringify(payload));
     const ok = await initFirebase(payload);
