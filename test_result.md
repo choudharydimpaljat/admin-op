@@ -254,7 +254,7 @@
 ## metadata:
 ##   created_by: "testing_agent"
 ##   version: "2.1"
-##   test_sequence: 1
+##   test_sequence: 2
 ##   run_ui: true
 ## test_plan:
 ##   current_focus: []
