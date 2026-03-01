@@ -1841,12 +1841,6 @@ export default function Index() {
     );
   };
 
-  const previewFullYear = useMemo(() => {
-    if (!successModal.entry) return false;
-    const parts = (successModal.entry.expirydate || "01-01-2026").split("-");
-    return Boolean(parts[2] && parts[2].length === 4);
-  }, [successModal.entry]);
-
   const renderDeviceHeader = (showFilters) => (
     <View style={{ zIndex: 20 }}>
       <Text style={styles.sectionTitle}>Collection</Text>
