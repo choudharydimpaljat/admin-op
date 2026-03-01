@@ -2138,7 +2138,7 @@ export default function Index() {
                 <Text style={[styles.infoText, { fontWeight: "600" }]}
                   >Authorized access only</Text>
                 <Text style={styles.infoText}
-                  >Only authorized administrators can access this panel.</Text>
+                  >Login using the admin email and password.</Text>
               </View>
               <TextInput
                 style={[styles.input, { marginBottom: 8 }]}
