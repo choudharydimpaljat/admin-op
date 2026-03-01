@@ -32,10 +32,8 @@ import {
   set,
 } from "firebase/database";
 import {
-  GoogleAuthProvider,
   getAuth,
   onAuthStateChanged,
-  signInWithCredential,
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
