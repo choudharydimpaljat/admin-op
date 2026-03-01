@@ -138,6 +138,9 @@
 ##       - working: true
 ##         agent: "testing"
 ##         comment: "✅ All form fields (API Key, Auth Domain, Database URL, Project ID, Storage Bucket, Messaging Sender ID, App ID, Admin Email, Google Client IDs) are visible and functional. Form validation works correctly - shows error message when required fields are missing. Input fields accept text input properly on mobile viewports."
+##       - working: true
+##         agent: "main"
+##         comment: "Removed Google client ID fields; setup now prefilled with provided Firebase config."
 ##   - task: "Login Screen Rendering"
 ##     implemented: true
 ##     working: true
