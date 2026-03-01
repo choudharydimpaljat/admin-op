@@ -1216,7 +1216,7 @@ export default function Index() {
     };
   }, [allData]);
 
-  const openKeyModal = (entry?: KeyEntry) => {
+  const openKeyModal = (entry) => {
     if (entry) {
       const id = entry.device_id || entry.id || "";
       setCurrentUpdateId(id);
@@ -1292,7 +1292,7 @@ export default function Index() {
     let pos = parseInt(position, 10);
     if (!pos || pos < 1) pos = allData.length + 1;
     if (pos > allData.length + 1) pos = allData.length + 1;
-    const entry: KeyEntry = {
+    const entry = {
       device_id: deviceId,
       key,
       expirydate: expiry,
