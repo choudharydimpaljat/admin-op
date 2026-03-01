@@ -2817,6 +2817,32 @@ export default function Index() {
                       {successModal.entry.Allowoffline ? "OFFLINE" : "ONLINE"}
                     </Text>
                   </View>
+                  <View style={[styles.toggleRow, { justifyContent: "flex-end" }]}
+                  >
+                    <Pressable
+                      style={[
+                        styles.toggleSwitch,
+                        previewFullYear && styles.toggleSwitchActive,
+                      ]}
+                      onPress={() =>
+                        successModal.entry?.device_id &&
+                        handleToggleYear(
+                          successModal.entry.device_id,
+                          !previewFullYear
+                        )
+                      }
+                    >
+                      <View
+                        style={[
+                          styles.toggleKnob,
+                          previewFullYear && styles.toggleKnobActive,
+                        ]}
+                      />
+                    </Pressable>
+                    <Text style={{ fontSize: 10, color: THEMES[theme].textSecondary }}>
+                      Year Format
+                    </Text>
+                  </View>
                 </View>
               </View>
             )}
