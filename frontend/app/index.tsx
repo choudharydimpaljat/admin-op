@@ -996,6 +996,7 @@ export default function Index() {
   const authRef = useRef(null);
   const dbRefCurrent = useRef(null);
   const autoLoginAttempted = useRef(false);
+  const pendingScrollId = useRef(null);
 
   const showToast = useCallback(
     (message) => {
