@@ -209,12 +209,12 @@ const createStyles = (theme) =>
       fontSize: 11,
     },
     card: {
-      backgroundColor: theme.bgCard,
+      backgroundColor: theme.cardBg,
       borderRadius: 12,
       padding: 16,
       marginBottom: 12,
       borderWidth: 1,
-      borderColor: theme.border,
+      borderColor: theme.cardBorder,
     },
     sectionTitle: {
       color: theme.accent,
@@ -419,15 +419,16 @@ const createStyles = (theme) =>
     },
     deviceCard: {
       flex: 1,
-      backgroundColor: theme.bgCard,
+      backgroundColor: theme.cardBg,
       borderRadius: 12,
       padding: 12,
       marginBottom: 10,
       borderWidth: 1,
-      borderColor: theme.border,
+      borderColor: theme.cardBorder,
     },
     deviceCardExpired: {
       borderColor: theme.danger,
+      backgroundColor: theme.expiredCardBg,
     },
     deviceCardHighlight: {
       borderColor: theme.accent,
@@ -468,7 +469,7 @@ const createStyles = (theme) =>
       marginBottom: 6,
     },
     keyValue: {
-      backgroundColor: theme.accentLight,
+      backgroundColor: theme.keyBg,
       paddingVertical: 6,
       paddingHorizontal: 8,
       borderRadius: 6,
@@ -478,7 +479,7 @@ const createStyles = (theme) =>
       marginBottom: 6,
     },
     keyValueExpired: {
-      backgroundColor: "rgba(239,68,68,0.15)",
+      backgroundColor: theme.expiredKeyBg,
       color: theme.danger,
     },
     metaRow: {
