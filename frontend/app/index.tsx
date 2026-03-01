@@ -2325,39 +2325,25 @@ export default function Index() {
             <View style={styles.card}>
               <Text style={styles.sectionTitle}>Collections</Text>
               <View>
-                {collections.map((name, index) => (
+                {collections.map((name) => (
                   <View
                     key={name}
                     style={{
                       flexDirection: "row",
                       alignItems: "center",
                       justifyContent: "space-between",
-                      backgroundColor: THEMES[theme].bgSecondary,
+                      backgroundColor: THEMES[theme].cardBg,
                       padding: 10,
                       borderRadius: 8,
                       marginBottom: 6,
+                      borderWidth: 1,
+                      borderColor: THEMES[theme].cardBorder,
                     }}
                   >
                     <Text style={{ color: THEMES[theme].textPrimary, fontSize: 12 }}>
                       {name}
                     </Text>
                     <View style={{ flexDirection: "row", gap: 6 }}>
-                      {index > 0 && (
-                        <TouchableOpacity
-                          style={[styles.actionBtn, { backgroundColor: "rgba(16,185,129,0.2)" }]}
-                          onPress={() => handleMoveCollection(name, "up")}
-                        >
-                          <MaterialCommunityIcons name="chevron-up" size={16} color={THEMES[theme].success} />
-                        </TouchableOpacity>
-                      )}
-                      {index < collections.length - 1 && (
-                        <TouchableOpacity
-                          style={[styles.actionBtn, { backgroundColor: "rgba(245,158,11,0.2)" }]}
-                          onPress={() => handleMoveCollection(name, "down")}
-                        >
-                          <MaterialCommunityIcons name="chevron-down" size={16} color="#f59e0b" />
-                        </TouchableOpacity>
-                      )}
                       <TouchableOpacity
                         style={[styles.actionBtn, styles.editBtn]}
                         onPress={() => {
