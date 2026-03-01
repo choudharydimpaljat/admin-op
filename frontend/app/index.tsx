@@ -1260,11 +1260,13 @@ export default function Index() {
         ),
       });
     } else {
+      const tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 1);
       setCurrentUpdateId(null);
       setKeyForm({
         deviceId: "",
         key: "",
-        expiry: "",
+        expiry: formatDate(tomorrow),
         user: "",
         allowOffline: false,
         position: "",
