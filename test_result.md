@@ -197,11 +197,14 @@
 ##     file: "frontend/app/index.tsx"
 ##     stuck_count: 0
 ##     priority: "medium"
-##     needs_retesting: false
+##     needs_retesting: true
 ##     status_history:
 ##       - working: true
 ##         agent: "testing"
 ##         comment: "✅ Quick date buttons (7, 15, 30 days) are present in the add key modal. Buttons are clickable and functional for setting expiry dates quickly. UI elements work well on mobile touch interfaces."
+##       - working: true
+##         agent: "main"
+##         comment: "Adjusted quick-date button widths to match date input; needs retest."
 ##   - task: "JSON Tab"
 ##     implemented: true
 ##     working: true
