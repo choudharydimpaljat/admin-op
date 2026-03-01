@@ -1430,7 +1430,16 @@ export default function Index() {
       (item) => (item.device_id || item.id) === id
     );
     if (index < 0 || index >= filteredData.length) return;
-    listRef.current?.scrollToIndex({ index, animated: true, viewPosition: 0.2 });
+    const safeIndex = Math.min(index, filteredData.length - 1);
+    try {
+      listRef.current?.scrollToIndex({
+        index: safeIndex,
+        animated: true,
+        viewPosition: 0.2,
+      });
+    } catch (e) {
+      listRef.current?.scrollToOffset({ offset: 0, animated: true });
+    }
     setHighlightId(id);
     setTimeout(() => setHighlightId(null), 1500);
     pendingScrollId.current = null;
