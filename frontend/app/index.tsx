@@ -1004,6 +1004,7 @@ export default function Index() {
   const dbRefCurrent = useRef(null);
   const autoLoginAttempted = useRef(false);
   const pendingScrollId = useRef(null);
+  const lastSavedId = useRef(null);
 
   const filteredData = useMemo(() => {
     let data = [...allData];
