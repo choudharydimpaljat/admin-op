@@ -1073,12 +1073,10 @@ export default function Index() {
     const auth = authRef.current;
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user && user.email === storedConfig.email) {
-        const ts = await AsyncStorage.getItem("loginTimestamp");
-        if (ts && Date.now() - Number(ts) < 86400000) {
-          setAuthUser(user);
-          return;
-        }
-        await AsyncStorage.removeItem("loginTimestamp");
+        setAuthUser(user);
+        return;
+      }
+      if (user && user.email !== storedConfig.email) {
         await signOut(auth);
       }
       setAuthUser(null);
