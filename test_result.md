@@ -303,3 +303,5 @@
 ##     message: "Backend health endpoints tested via deep testing agent; all working."
 ##   - agent: "testing"
 ##     message: "✅ MOBILE TESTING COMPLETED on iPhone 12 (390x844) and Galaxy S21 (360x800). LOGIN SCREEN: Google login successfully removed, email/password auth works, responsive layout confirmed. UI ELEMENTS: Login form, remember checkbox, reset config button all properly positioned on both viewports. Firebase authentication requires valid credentials, but UI flows are working correctly. All requested mobile responsive features verified."
+##   - agent: "testing"
+##     message: "❌ CRITICAL ISSUE FOUND: JavaScript error 'Cannot access filteredData before initialization' prevents app from loading. This is a React hooks circular dependency issue where filteredData useMemo and attemptScrollToDevice useCallback create circular references. FIXED by restructuring attemptScrollToDevice to compute filtered data dynamically without dependency on filteredData. Error blocks all main functionality - requires immediate resolution."
