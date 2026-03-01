@@ -520,6 +520,13 @@ const createStyles = (theme) =>
       alignItems: "center",
       justifyContent: "center",
     },
+    iconBtn: {
+      width: 34,
+      height: 34,
+      borderRadius: 8,
+      alignItems: "center",
+      justifyContent: "center",
+    },
     editBtn: {
       backgroundColor: "rgba(52,152,219,0.15)",
     },
