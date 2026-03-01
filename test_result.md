@@ -226,6 +226,9 @@
 ##       - working: true
 ##         agent: "main"
 ##         comment: "Self-tested success modal: full card visible, OK button jumps to card; Close works." 
+##       - working: true
+##         agent: "main"
+##         comment: "Re-tested: success modal card layout fixed, OK jumps and glow blinks ~5s." 
 ##   - task: "Quick Date Buttons"
 ##     implemented: true
 ##     working: true
@@ -312,3 +315,5 @@
 ##     message: "Applied fix and verified app loads with login; keys list, filters, modal layout, JSON and settings tabs confirmed. Remaining manual check: success modal OK jump + glow." 
 ##   - agent: "main"
 ##     message: "Verified success modal card renders and OK jumps to card after save; Close dismisses modal." 
+##   - agent: "main"
+##     message: "Glow blink duration updated to ~5s; success modal card/jump re-tested." 
