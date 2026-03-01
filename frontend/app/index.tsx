@@ -2099,11 +2099,11 @@ export default function Index() {
           <Text style={styles.statLabel}>Total</Text>
         </View>
         <View style={styles.statBox}>
-          <Text style={styles.statValue}>{stats.active}</Text>
+          <Text style={[styles.statValue, styles.statValueActive]}>{stats.active}</Text>
           <Text style={styles.statLabel}>Active</Text>
         </View>
         <View style={styles.statBox}>
-          <Text style={styles.statValue}>{stats.expired}</Text>
+          <Text style={[styles.statValue, styles.statValueExpired]}>{stats.expired}</Text>
           <Text style={styles.statLabel}>Expired</Text>
         </View>
       </View>
