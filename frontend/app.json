@@ -1,17 +1,19 @@
 {
   "expo": {
-    "name": "frontend",
-    "slug": "frontend",
+    "name": "Admin OP",
+    "slug": "admin-op",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "frontend",
+    "scheme": "adminop",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.admin.op"
     },
     "android": {
+      "package": "com.admin.op",
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#000"
