@@ -1183,12 +1183,6 @@ export default function Index() {
     tryAutoLogin();
   }, [storedConfig]);
 
-  useEffect(() => {
-    if (pendingScrollId.current) {
-      attemptScrollToDevice(pendingScrollId.current);
-    }
-  }, [attemptScrollToDevice]);
-
   const loadCollections = useCallback(async () => {
     if (!dbRefCurrent.current) return;
     try {
