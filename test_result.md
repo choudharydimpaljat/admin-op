@@ -144,7 +144,7 @@
 ##     file: "frontend/app/index.tsx"
 ##     stuck_count: 0
 ##     priority: "high"
-##     needs_retesting: true
+##     needs_retesting: false
 ##     status_history:
 ##       - working: true
 ##         agent: "testing"
@@ -152,6 +152,9 @@
 ##       - working: true
 ##         agent: "main"
 ##         comment: "Removed Google login, prefilled Firebase config, and enabled auto-login with saved credentials; needs UI retest."
+##       - working: true
+##         agent: "testing"
+##         comment: "✅ MOBILE RETEST PASSED: Google login successfully removed from login screen. Email/password authentication interface works correctly on both iPhone 12 (390x844) and Galaxy S21 (360x800). Login form, remember checkbox, and reset config button all properly responsive and positioned. Firebase authentication requires valid credentials but UI flows confirmed working."
 ##   - task: "Bottom Navigation"
 ##     implemented: true
 ##     working: true
