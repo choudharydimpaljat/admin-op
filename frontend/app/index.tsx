@@ -1838,6 +1838,153 @@ export default function Index() {
     return Boolean(parts[2] && parts[2].length === 4);
   }, [successModal.entry]);
 
+  const renderDeviceHeader = (showFilters) => (
+    <View style={{ zIndex: 20 }}>
+      <Text style={styles.sectionTitle}>Collection</Text>
+      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+        <View style={styles.collectionSelector}>
+          {collections.map((name) => (
+            <Pressable
+              key={name}
+              style={[
+                styles.collectionBtn,
+                currentCollection === name && styles.collectionBtnActive,
+              ]}
+              onPress={() => {
+                setCurrentCollection(name);
+                showToast(name);
+              }}
+            >
+              <Text
+                style={[
+                  styles.collectionBtnText,
+                  currentCollection === name && styles.collectionBtnTextActive,
+                ]}
+              >
+                {name}
+              </Text>
+            </Pressable>
+          ))}
+        </View>
+      </ScrollView>
+      <View style={styles.statsRow}>
+        <View style={styles.statBox}>
+          <Text style={styles.statValue}>{stats.total}</Text>
+          <Text style={styles.statLabel}>Total</Text>
+        </View>
+        <View style={styles.statBox}>
+          <Text style={styles.statValue}>{stats.active}</Text>
+          <Text style={styles.statLabel}>Active</Text>
+        </View>
+        <View style={styles.statBox}>
+          <Text style={styles.statValue}>{stats.expired}</Text>
+          <Text style={styles.statLabel}>Expired</Text>
+        </View>
+      </View>
+      <View style={styles.subTabs}>
+        {[
+          { key: "keys", label: "Keys" },
+          { key: "json", label: "JSON" },
+        ].map((tab) => (
+          <Pressable
+            key={tab.key}
+            style={[styles.subTab, subTab === tab.key && styles.subTabActive]}
+            onPress={() => setSubTab(tab.key)}
+          >
+            <Text
+              style={[
+                styles.subTabText,
+                subTab === tab.key && styles.subTabTextActive,
+              ]}
+            >
+              {tab.label}
+            </Text>
+          </Pressable>
+        ))}
+      </View>
+      {showFilters && (
+        <View style={{ zIndex: 30 }}>
+          <View style={styles.searchBar}>
+            <MaterialCommunityIcons
+              name="magnify"
+              size={16}
+              color={THEMES[theme].textSecondary}
+            />
+            <TextInput
+              style={{ flex: 1, color: THEMES[theme].textPrimary, fontSize: 12 }}
+              placeholder="Search device, user, key"
+              placeholderTextColor={THEMES[theme].textSecondary}
+              value={searchValue}
+              onChangeText={setSearchValue}
+            />
+          </View>
+          <View style={styles.filterRow}>
+            {[
+              { key: "all", label: "All" },
+              { key: "active", label: "Active" },
+              { key: "expired", label: "Expired" },
+            ].map((filter) => (
+              <Pressable
+                key={filter.key}
+                style={[
+                  styles.filterTab,
+                  filterStatus === filter.key && styles.filterTabActive,
+                ]}
+                onPress={() => setFilterStatus(filter.key)}
+              >
+                <Text
+                  style={[
+                    styles.filterTabText,
+                    filterStatus === filter.key && styles.filterTabTextActive,
+                  ]}
+                >
+                  {filter.label}
+                </Text>
+              </Pressable>
+            ))}
+            <View style={{ position: "relative", zIndex: 40 }}>
+              <Pressable
+                style={styles.dropDown}
+                onPress={() => setDaysOpen((prev) => !prev)}
+              >
+                <Text style={styles.dropDownText}>
+                  {daysFilter === "all" ? "All Days" : `${daysFilter} Days`}
+                </Text>
+                <MaterialCommunityIcons
+                  name={daysOpen ? "chevron-up" : "chevron-down"}
+                  size={16}
+                  color={THEMES[theme].textPrimary}
+                />
+              </Pressable>
+              {daysOpen && (
+                <View style={styles.dropDownMenu}>
+                  {[
+                    { label: "All Days", value: "all" },
+                    { label: "7 Days", value: "7" },
+                    { label: "15 Days", value: "15" },
+                    { label: "30 Days", value: "30" },
+                    { label: "30+ Days", value: "30+" },
+                  ].map((option) => (
+                    <Pressable
+                      key={option.value}
+                      style={styles.dropDownItem}
+                      onPress={() => {
+                        setDaysFilter(option.value);
+                        setDaysOpen(false);
+                      }}
+                    >
+                      <Text style={styles.dropDownItemText}>{option.label}</Text>
+                    </Pressable>
+                  ))}
+                </View>
+              )}
+            </View>
+          </View>
+        </View>
+      )}
+    </View>
+  );
+
   if (configLoading) {
     return (
       <SafeAreaView style={styles.screen}>
