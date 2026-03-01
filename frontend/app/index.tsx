@@ -1508,67 +1508,6 @@ export default function Index() {
     setCollections(updated);
   };
 
-  const handleGoogleLogin = async () => {
-    if (!authRef.current || !storedConfig) {
-      showToast("Firebase setup required");
-      return;
-    }
-    const clientId = Platform.select({
-      ios: storedConfig.googleIosClientId || storedConfig.googleClientId,
-      android: storedConfig.googleAndroidClientId || storedConfig.googleClientId,
-      default: storedConfig.googleClientId,
-    });
-    if (!clientId) {
-      showToast("Google client ID missing");
-      return;
-    }
-    setAuthLoading(true);
-    setAuthError("");
-    try {
-      const redirectUri = AuthSession.makeRedirectUri({
-        scheme: "frontend",
-        useProxy: true,
-      });
-      const nonce = Math.random().toString(36).slice(2);
-      const authUrl =
-        `https://accounts.google.com/o/oauth2/v2/auth?` +
-        `client_id=${clientId}` +
-        `&redirect_uri=${encodeURIComponent(redirectUri)}` +
-        `&response_type=id_token` +
-        `&scope=${encodeURIComponent("openid profile email")}` +
-        `&nonce=${nonce}`;
-      const result = await AuthSession.startAsync({
-        authUrl,
-        returnUrl: redirectUri,
-      });
-      if (result.type !== "success" || !("params" in result)) {
-        setAuthLoading(false);
-        return;
-      }
-      const idToken = result.params?.id_token;
-      if (!idToken) {
-        setAuthLoading(false);
-        showToast("Google sign-in failed");
-        return;
-      }
-      const credential = GoogleAuthProvider.credential(idToken);
-      const authResult = await signInWithCredential(authRef.current, credential);
-      if (authResult.user.email !== storedConfig.email) {
-        await signOut(authRef.current);
-        setAuthError("Access denied: email not authorized.");
-        setAuthLoading(false);
-        return;
-      }
-      await AsyncStorage.setItem("loginTimestamp", Date.now().toString());
-      setAuthUser(authResult.user);
-      showToast("Login successful");
-    } catch (e) {
-      setAuthError(e?.message || "Login failed");
-    } finally {
-      setAuthLoading(false);
-    }
-  };
-
   const handleEmailLogin = async () => {
     if (!authRef.current || !storedConfig) {
       showToast("Firebase setup required");
