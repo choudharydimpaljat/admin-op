@@ -36,13 +36,11 @@ import {
 import {
   GoogleAuthProvider,
   getAuth,
-  initializeAuth,
   onAuthStateChanged,
   signInWithCredential,
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
-import { getReactNativePersistence } from "firebase/auth/react-native";
 
 WebBrowser.maybeCompleteAuthSession();
 
@@ -1019,15 +1017,7 @@ export default function Index() {
       try {
         await resetFirebaseInstance();
         const app = initializeApp(config.fc);
-        let authInstance;
-        try {
-          authInstance = initializeAuth(app, {
-            persistence: getReactNativePersistence(AsyncStorage),
-          });
-        } catch (e) {
-          authInstance = getAuth(app);
-        }
-        authRef.current = authInstance;
+        authRef.current = getAuth(app);
         dbRefCurrent.current = getDatabase(app);
         return true;
       } catch (e) {
