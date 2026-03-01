@@ -18,8 +18,6 @@ import {
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import * as Clipboard from "expo-clipboard";
-import * as AuthSession from "expo-auth-session";
-import * as WebBrowser from "expo-web-browser";
 import {
   deleteApp,
   getApps,
@@ -42,7 +40,19 @@ import {
   signOut,
 } from "firebase/auth";
 
-WebBrowser.maybeCompleteAuthSession();
+const DEFAULT_CONFIG = {
+  fc: {
+    apiKey: "AIzaSyA1FIDLD-AKVlEz-AJiweYVdxhIP0Rnijk",
+    authDomain: "opjat-2005.firebaseapp.com",
+    databaseURL:
+      "https://opjat-2005-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "opjat-2005",
+    storageBucket: "opjat-2005.firebasestorage.app",
+    messagingSenderId: "2500552965",
+    appId: "1:2500552965:web:4f6664a366967a2525af6c",
+  },
+  email: "www.webomprakashjat@gmail.com",
+};
 
 const THEMES = {
   cream: {
