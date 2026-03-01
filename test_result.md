@@ -293,6 +293,8 @@
 ##   - agent: "main"
 ##     message: "Self-tested with provided credentials: login success, days filter overlay ok, key modal layout verified, JSON/Settings tabs verified." 
 ##   - agent: "main"
+##     message: "Please retest main panel after latest updates: success modal card/actions, jump/glow, removal of collection reorder buttons, and new premium theme colors." 
+##   - agent: "main"
 ##     message: "Applied UI updates (removed Google login, sticky header, modal layout, theme colors). Please retest current_focus tasks on mobile viewports."
 ##   - agent: "main"
 ##     message: "Backend health endpoints tested via deep testing agent; all working."
