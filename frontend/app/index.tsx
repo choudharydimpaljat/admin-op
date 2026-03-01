@@ -2490,10 +2490,10 @@ export default function Index() {
               <Text style={styles.sectionTitle}>Theme</Text>
               <View style={styles.themeGrid}>
                 {([
-                  { key: "cream", label: "Cream", colors: ["#c4956a", "#a67c52"] },
-                  { key: "gold", label: "Gold", colors: ["#ffc107", "#ff9800"] },
-                  { key: "cyber", label: "Cyber", colors: ["#00f5ff", "#0080ff"] },
-                  { key: "firebase", label: "Firebase", colors: ["#FF6D00", "#DD2C00"] },
+                  { key: "cream", label: "Cream", colors: ["#2d6cdf", "#1f5ae0"] },
+                  { key: "gold", label: "Gold", colors: ["#f5b700", "#d48f00"] },
+                  { key: "cyber", label: "Cyber", colors: ["#33d4ff", "#2188ff"] },
+                  { key: "firebase", label: "Firebase", colors: ["#ff8a3d", "#f04f3d"] },
                 ]).map((option) => (
                   <Pressable
                     key={option.key}
