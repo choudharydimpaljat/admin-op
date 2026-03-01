@@ -826,13 +826,16 @@ const createStyles = (theme) =>
   });
 
 const FireOverlay = ({ visible }) => {
-  const flames = useRef([
-    new Animated.Value(0),
-    new Animated.Value(0),
-    new Animated.Value(0),
-    new Animated.Value(0),
-    new Animated.Value(0),
-  ]).current;
+  const flames = useMemo(
+    () => [
+      new Animated.Value(0),
+      new Animated.Value(0),
+      new Animated.Value(0),
+      new Animated.Value(0),
+      new Animated.Value(0),
+    ],
+    []
+  );
 
   useEffect(() => {
     if (!visible) return;
