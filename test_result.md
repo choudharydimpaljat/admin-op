@@ -310,3 +310,5 @@
 ##     message: "❌ CRITICAL ISSUE FOUND: JavaScript error 'Cannot access filteredData before initialization' prevents app from loading. This is a React hooks circular dependency issue where filteredData useMemo and attemptScrollToDevice useCallback create circular references. FIXED by restructuring attemptScrollToDevice to compute filtered data dynamically without dependency on filteredData. Error blocks all main functionality - requires immediate resolution."
 ##   - agent: "main"
 ##     message: "Applied fix and verified app loads with login; keys list, filters, modal layout, JSON and settings tabs confirmed. Remaining manual check: success modal OK jump + glow." 
+##   - agent: "main"
+##     message: "Verified success modal card renders and OK jumps to card after save; Close dismisses modal." 
