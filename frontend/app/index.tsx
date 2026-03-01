@@ -1321,7 +1321,7 @@ export default function Index() {
     }
   };
 
-  const handleToggleYear = async (id: string, fullYear: boolean) => {
+  const handleToggleYear = async (id, fullYear) => {
     const updated = [...allData];
     const idx = updated.findIndex(
       (item) => (item.device_id || item.id) === id
@@ -1337,7 +1337,7 @@ export default function Index() {
     }
   };
 
-  const handleDeleteKey = async (id: string) => {
+  const handleDeleteKey = async (id) => {
     const ok = await confirmAction("Delete Key", `Delete device ${id}?`);
     if (!ok) return;
     const updated = allData.filter(
@@ -1347,13 +1347,13 @@ export default function Index() {
     if (saved) showToast("Deleted");
   };
 
-  const handleCopy = async (value?: string) => {
+  const handleCopy = async (value) => {
     if (!value) return;
     await Clipboard.setStringAsync(value);
     showToast("Copied");
   };
 
-  const scrollToDevice = (id: string) => {
+  const scrollToDevice = (id) => {
     const index = filteredData.findIndex(
       (item) => (item.device_id || item.id) === id
     );
