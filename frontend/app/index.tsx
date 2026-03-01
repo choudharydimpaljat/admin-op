@@ -950,7 +950,7 @@ export default function Index() {
   const toastAnim = useRef(new Animated.Value(0)).current;
   const [successModal, setSuccessModal] = useState({
     visible: false,
-    entry: null as KeyEntry | null,
+    entry: null,
     position: 0,
     isUpdate: false,
   });
@@ -969,7 +969,7 @@ export default function Index() {
   const dbRefCurrent = useRef(null);
 
   const showToast = useCallback(
-    (message: string) => {
+    (message) => {
       setToastMessage(message);
       setToastVisible(true);
       toastAnim.setValue(0);
