@@ -28,6 +28,18 @@
 ##         -agent: "main"  # or "testing" or "user"
 ##         -comment: "Detailed comment about status"
 ##
+## backend:
+##   - task: "Backend health endpoints"
+##     implemented: true
+##     working: true
+##     file: "backend/server.py"
+##     stuck_count: 0
+##     priority: "low"
+##     needs_retesting: false
+##     status_history:
+##       - working: true
+##         agent: "testing"
+##         comment: "GET /api, POST /api/status, GET /api/status verified via deep testing agent."
 ## frontend:
 ##   - task: "Task name"
 ##     implemented: true
