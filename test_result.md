@@ -192,6 +192,9 @@
 ##       - working: true
 ##         agent: "main"
 ##         comment: "After fix, app loads; keys list renders with sticky header and cards scroll independently." 
+##       - working: true
+##         agent: "main"
+##         comment: "Added long-press copy on Device ID and colored active/expired counts; verified in preview." 
 ##   - task: "Add Key Modal"
 ##     implemented: true
 ##     working: true
@@ -280,6 +283,9 @@
 ##       - working: true
 ##         agent: "main"
 ##         comment: "Self-tested Settings tab: theme colors look improved, expired cards tinted red in Devices view." 
+##       - working: true
+##         agent: "main"
+##         comment: "Database URL tap-to-copy added and verified." 
 ## metadata:
 ##   created_by: "testing_agent"
 ##   version: "2.1"
