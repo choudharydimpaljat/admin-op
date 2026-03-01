@@ -2576,7 +2576,7 @@ export default function Index() {
                   <Text style={styles.inputLabel}>Expiry Date</Text>
                   <View style={{ flexDirection: "row", gap: 6, alignItems: "center" }}>
                     <TextInput
-                      style={[styles.input, { flex: 1 }]}
+                      style={[styles.input, { flex: 1, minWidth: 0 }]}
                       placeholder="dd-mm-yyyy"
                       placeholderTextColor={THEMES[theme].textSecondary}
                       value={keyForm.expiry}
@@ -2587,7 +2587,14 @@ export default function Index() {
                     {[7, 15, 30].map((day) => (
                       <TouchableOpacity
                         key={day}
-                        style={[styles.primaryBtn, { paddingHorizontal: 10, backgroundColor: THEMES[theme].accent }]}
+                        style={[
+                          styles.primaryBtn,
+                          {
+                            flex: 1,
+                            paddingHorizontal: 0,
+                            backgroundColor: THEMES[theme].accent,
+                          },
+                        ]}
                         onPress={() => handleQuickDate(day)}
                       >
                         <Text style={styles.primaryBtnText}>{day}d</Text>
@@ -2596,13 +2603,13 @@ export default function Index() {
                   </View>
                   <View style={{ flexDirection: "row", gap: 6, marginTop: 8, alignItems: "center" }}>
                     <TouchableOpacity
-                      style={[styles.primaryBtn, { paddingHorizontal: 12 }]}
+                      style={[styles.primaryBtn, { flex: 1, paddingHorizontal: 0 }]}
                       onPress={() => handleAdjustDate(-1)}
                     >
                       <Text style={styles.primaryBtnText}>-1</Text>
                     </TouchableOpacity>
                     <TouchableOpacity
-                      style={[styles.primaryBtn, { paddingHorizontal: 12 }]}
+                      style={[styles.primaryBtn, { flex: 1, paddingHorizontal: 0 }]}
                       onPress={() => handleAdjustDate(1)}
                     >
                       <Text style={styles.primaryBtnText}>+1</Text>
