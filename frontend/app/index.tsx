@@ -893,11 +893,11 @@ const FireOverlay = ({ visible }) => {
 const stylesBase = createStyles(THEMES.cream);
 
 export default function Index() {
-  const [theme, setTheme] = useState<ThemeName>("cream");
+  const [theme, setTheme] = useState("cream");
   const styles = useMemo(() => createStyles(THEMES[theme]), [theme]);
-  const [storedConfig, setStoredConfig] = useState<StoredConfig | null>(null);
+  const [storedConfig, setStoredConfig] = useState(null);
   const [configLoading, setConfigLoading] = useState(true);
-  const [setupTab, setSetupTab] = useState<"paste" | "manual">("paste");
+  const [setupTab, setSetupTab] = useState("paste");
   const [setupPaste, setSetupPaste] = useState("");
   const [setupForm, setSetupForm] = useState({
     apiKey: "",
@@ -913,28 +913,26 @@ export default function Index() {
     googleIosClientId: "",
   });
   const [setupError, setSetupError] = useState("");
-  const [authUser, setAuthUser] = useState<any>(null);
+  const [authUser, setAuthUser] = useState(null);
   const [authLoading, setAuthLoading] = useState(false);
   const [authError, setAuthError] = useState("");
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const [rememberLogin, setRememberLogin] = useState(false);
-  const [activeTab, setActiveTab] = useState<"devices" | "settings">("devices");
-  const [subTab, setSubTab] = useState<"keys" | "json">("keys");
-  const [collections, setCollections] = useState<string[]>([]);
+  const [activeTab, setActiveTab] = useState("devices");
+  const [subTab, setSubTab] = useState("keys");
+  const [collections, setCollections] = useState([]);
   const [currentCollection, setCurrentCollection] = useState("");
-  const [currentData, setCurrentData] = useState<KeyEntry[]>([]);
-  const [allData, setAllData] = useState<KeyEntry[]>([]);
+  const [currentData, setCurrentData] = useState([]);
+  const [allData, setAllData] = useState([]);
   const [searchValue, setSearchValue] = useState("");
-  const [filterStatus, setFilterStatus] = useState<"all" | "active" | "expired">(
-    "all"
-  );
+  const [filterStatus, setFilterStatus] = useState("all");
   const [daysFilter, setDaysFilter] = useState("all");
   const [daysOpen, setDaysOpen] = useState(false);
   const [rawJson, setRawJson] = useState("");
   const [firebaseStatus, setFirebaseStatus] = useState("Idle");
   const [keyModalVisible, setKeyModalVisible] = useState(false);
-  const [currentUpdateId, setCurrentUpdateId] = useState<string | null>(null);
+  const [currentUpdateId, setCurrentUpdateId] = useState(null);
   const [keyForm, setKeyForm] = useState({
     deviceId: "",
     key: "",
@@ -943,12 +941,10 @@ export default function Index() {
     allowOffline: false,
     position: "",
   });
-  const [positionSuggestions, setPositionSuggestions] = useState<
-    { position: number; user: string }[]
-  >([]);
-  const [userSuggestions, setUserSuggestions] = useState<string[]>([]);
+  const [positionSuggestions, setPositionSuggestions] = useState([]);
+  const [userSuggestions, setUserSuggestions] = useState([]);
   const [showTop, setShowTop] = useState(false);
-  const [highlightId, setHighlightId] = useState<string | null>(null);
+  const [highlightId, setHighlightId] = useState(null);
   const [toastMessage, setToastMessage] = useState("");
   const [toastVisible, setToastVisible] = useState(false);
   const toastAnim = useRef(new Animated.Value(0)).current;
@@ -959,7 +955,7 @@ export default function Index() {
     isUpdate: false,
   });
   const [collectionModalVisible, setCollectionModalVisible] = useState(false);
-  const [editingCollection, setEditingCollection] = useState<string | null>(null);
+  const [editingCollection, setEditingCollection] = useState(null);
   const [collectionNameInput, setCollectionNameInput] = useState("");
   const [newCollectionName, setNewCollectionName] = useState("");
   const [confirmState, setConfirmState] = useState({
@@ -967,10 +963,10 @@ export default function Index() {
     title: "",
     message: "",
   });
-  const confirmResolveRef = useRef<((value: boolean) => void) | null>(null);
-  const listRef = useRef<FlatList<KeyEntry>>(null);
-  const authRef = useRef<any>(null);
-  const dbRefCurrent = useRef<any>(null);
+  const confirmResolveRef = useRef(null);
+  const listRef = useRef(null);
+  const authRef = useRef(null);
+  const dbRefCurrent = useRef(null);
 
   const showToast = useCallback(
     (message: string) => {
