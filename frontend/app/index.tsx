@@ -1418,15 +1418,21 @@ export default function Index() {
     setKeyForm((prev) => ({ ...prev, deviceId: text.trim() }));
   };
 
-  const scrollToDevice = (id) => {
+  const attemptScrollToDevice = (id) => {
+    if (!id) return;
     const index = filteredData.findIndex(
       (item) => (item.device_id || item.id) === id
     );
-    if (index !== -1) {
-      listRef.current?.scrollToIndex({ index, animated: true });
-      setHighlightId(id);
-      setTimeout(() => setHighlightId(null), 1500);
-    }
+    if (index < 0 || index >= filteredData.length) return;
+    listRef.current?.scrollToIndex({ index, animated: true, viewPosition: 0.2 });
+    setHighlightId(id);
+    setTimeout(() => setHighlightId(null), 1500);
+    pendingScrollId.current = null;
+  };
+
+  const scrollToDevice = (id) => {
+    pendingScrollId.current = id;
+    requestAnimationFrame(() => attemptScrollToDevice(id));
   };
 
   const handleSaveJson = async () => {
