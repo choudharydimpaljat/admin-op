@@ -2855,9 +2855,16 @@ export default function Index() {
               <TouchableOpacity
                 style={[styles.primaryBtn, { flex: 1, backgroundColor: THEMES[theme].success }]}
                 onPress={() => {
+                  const targetId = successModal.entry?.device_id || successModal.entry?.id;
                   setSuccessModal({ ...successModal, visible: false });
-                  if (successModal.entry?.device_id) {
-                    scrollToDevice(successModal.entry.device_id);
+                  setActiveTab("devices");
+                  setSubTab("keys");
+                  setSearchValue("");
+                  setFilterStatus("all");
+                  setDaysFilter("all");
+                  setDaysOpen(false);
+                  if (targetId) {
+                    setTimeout(() => scrollToDevice(targetId), 300);
                   }
                 }}
               >
