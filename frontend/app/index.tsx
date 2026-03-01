@@ -1387,13 +1387,6 @@ export default function Index() {
         isUpdate: Boolean(currentUpdateId),
       });
       closeKeyModal();
-      setHighlightId(entry.device_id || "");
-      setTimeout(() => setHighlightId(null), 1500);
-      setTimeout(() => {
-        if (entry.device_id) {
-          scrollToDevice(entry.device_id);
-        }
-      }, 500);
     }
   };
 
