@@ -990,14 +990,14 @@ export default function Index() {
     [toastAnim]
   );
 
-  const confirmAction = useCallback((title: string, message: string) => {
-    return new Promise<boolean>((resolve) => {
+  const confirmAction = useCallback((title, message) => {
+    return new Promise((resolve) => {
       confirmResolveRef.current = resolve;
       setConfirmState({ visible: true, title, message });
     });
   }, []);
 
-  const handleConfirm = (value: boolean) => {
+  const handleConfirm = (value) => {
     setConfirmState((prev) => ({ ...prev, visible: false }));
     if (confirmResolveRef.current) {
       confirmResolveRef.current(value);
@@ -1012,7 +1012,7 @@ export default function Index() {
   }, []);
 
   const initFirebase = useCallback(
-    async (config: StoredConfig) => {
+    async (config) => {
       try {
         await resetFirebaseInstance();
         const app = initializeApp(config.fc);
@@ -1039,11 +1039,11 @@ export default function Index() {
       try {
         const cfg = await AsyncStorage.getItem("fb_cfg");
         const themeValue = await AsyncStorage.getItem("theme");
-        if (themeValue && (themeValue in THEMES)) {
-          setTheme(themeValue as ThemeName);
+        if (themeValue && themeValue in THEMES) {
+          setTheme(themeValue);
         }
         if (cfg) {
-          const parsed = JSON.parse(cfg) as StoredConfig;
+          const parsed = JSON.parse(cfg);
           const valid = parsed?.fc && parsed?.email;
           if (valid) {
             setStoredConfig(parsed);
