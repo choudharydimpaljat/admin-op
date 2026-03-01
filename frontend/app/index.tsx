@@ -2541,7 +2541,9 @@ export default function Index() {
               </View>
               <View style={styles.configCard}>
                 <Text style={styles.configLabel}>Database URL</Text>
-                <Text style={styles.configValue}>{storedConfig.fc.databaseURL}</Text>
+                <Pressable onPress={() => handleCopy(storedConfig.fc.databaseURL)}>
+                  <Text style={styles.configValue}>{storedConfig.fc.databaseURL}</Text>
+                </Pressable>
               </View>
               <View style={styles.configCard}>
                 <Text style={styles.configLabel}>Admin Email</Text>
