@@ -2858,16 +2858,16 @@ export default function Index() {
             <Text style={styles.modalTitle}>
               {successModal.isUpdate ? "Key Updated" : "Key Added"}
             </Text>
-            {successModal.entry && (
+            {modalEntry ? (
               <View style={{ marginBottom: 12 }}>
-                {renderSuccessCard(successModal.entry, successModal.position)}
+                {renderSuccessCard(modalEntry, successModal.position)}
               </View>
-            )}
+            ) : null}
             <View style={{ flexDirection: "row", gap: 8 }}>
               <TouchableOpacity
                 style={[styles.primaryBtn, { flex: 1, backgroundColor: THEMES[theme].success }]}
                 onPress={() => {
-                  const targetId = successModal.entry?.device_id || successModal.entry?.id;
+                  const targetId = modalEntry?.device_id || modalEntry?.id;
                   setSuccessModal({ ...successModal, visible: false });
                   setActiveTab("devices");
                   setSubTab("keys");
@@ -2876,7 +2876,7 @@ export default function Index() {
                   setDaysFilter("all");
                   setDaysOpen(false);
                   if (targetId) {
-                    setTimeout(() => scrollToDevice(targetId), 300);
+                    setTimeout(() => scrollToDevice(targetId), 500);
                   }
                 }}
               >
