@@ -239,10 +239,16 @@
 ##   test_sequence: 1
 ##   run_ui: true
 ## test_plan:
-##   current_focus: []
+##   current_focus:
+##     - "Login Screen Rendering"
+##     - "Keys List Empty State"
+##     - "Add Key Modal"
+##     - "Quick Date Buttons"
+##     - "JSON Tab"
+##     - "Settings Tab"
 ##   stuck_tasks: []
-##   test_all: true
-##   test_priority: "completed"
+##   test_all: false
+##   test_priority: "high_first"
 ## agent_communication:
 ##   - agent: "main"
 ##     message: "Please validate setup, login (email/Google), data listing, add/edit/delete keys, JSON editor, collections, themes, and navigation."
