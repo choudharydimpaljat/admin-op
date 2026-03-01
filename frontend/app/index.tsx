@@ -2794,96 +2794,28 @@ export default function Index() {
             </Text>
             {successModal.entry && (
               <View style={{ marginBottom: 12 }}>
-                <View style={styles.deviceCard}>
-                  <View style={styles.positionTag}>
-                    <Text style={styles.positionText}>#{successModal.position}</Text>
-                  </View>
-                  <Text style={styles.deviceId}>
-                    {successModal.entry.device_id}
-                  </Text>
-                  <Text style={styles.userNameCard}>{successModal.entry.user}</Text>
-                  <Pressable onPress={() => handleCopy(successModal.entry?.key)}>
-                    <Text style={styles.keyValue}>{successModal.entry.key}</Text>
-                  </Pressable>
-                  <View style={styles.metaRow}>
-                    <Text style={styles.expiryText}>{successModal.entry.expirydate}</Text>
-                    <Text
-                      style={[
-                        styles.statusBadge,
-                        successModal.entry.Allowoffline
-                          ? styles.badgeOffline
-                          : styles.badgeOnline,
-                      ]}
-                    >
-                      {successModal.entry.Allowoffline ? "OFFLINE" : "ONLINE"}
-                    </Text>
-                  </View>
-                  <View style={[styles.toggleRow, { justifyContent: "flex-end" }]}
-                  >
-                    <Pressable
-                      style={[
-                        styles.toggleSwitch,
-                        previewFullYear && styles.toggleSwitchActive,
-                      ]}
-                      onPress={() =>
-                        successModal.entry?.device_id &&
-                        handleToggleYear(
-                          successModal.entry.device_id,
-                          !previewFullYear
-                        )
-                      }
-                    >
-                      <View
-                        style={[
-                          styles.toggleKnob,
-                          previewFullYear && styles.toggleKnobActive,
-                        ]}
-                      />
-                    </Pressable>
-                    <Text style={{ fontSize: 10, color: THEMES[theme].textSecondary }}>
-                      Year Format
-                    </Text>
-                  </View>
-                </View>
+                {renderSuccessCard(successModal.entry, successModal.position)}
               </View>
             )}
-            <View style={{ flexDirection: "row", gap: 8, marginBottom: 10 }}>
+            <View style={{ flexDirection: "row", gap: 8 }}>
               <TouchableOpacity
-                style={[styles.primaryBtn, { flex: 1, backgroundColor: "#3498db" }]}
+                style={[styles.primaryBtn, { flex: 1, backgroundColor: THEMES[theme].success }]}
                 onPress={() => {
-                  if (successModal.entry) {
-                    setSuccessModal({ ...successModal, visible: false });
-                    openKeyModal(successModal.entry);
+                  setSuccessModal({ ...successModal, visible: false });
+                  if (successModal.entry?.device_id) {
+                    scrollToDevice(successModal.entry.device_id);
                   }
                 }}
               >
-                <Text style={styles.primaryBtnText}>Edit</Text>
+                <Text style={styles.primaryBtnText}>OK - Go to Card</Text>
               </TouchableOpacity>
               <TouchableOpacity
-                style={[styles.primaryBtn, { flex: 1, backgroundColor: THEMES[theme].danger }]}
-                onPress={async () => {
-                  if (!successModal.entry) return;
-                  const ok = await confirmAction("Delete Key", "Delete this key?");
-                  if (ok) {
-                    await handleDeleteKey(successModal.entry.device_id || "");
-                    setSuccessModal({ ...successModal, visible: false });
-                  }
-                }}
+                style={[styles.primaryBtn, { flex: 1, backgroundColor: THEMES[theme].bgSecondary }]}
+                onPress={() => setSuccessModal({ ...successModal, visible: false })}
               >
-                <Text style={styles.primaryBtnText}>Delete</Text>
+                <Text style={[styles.primaryBtnText, { color: THEMES[theme].textSecondary }]}>Close</Text>
               </TouchableOpacity>
             </View>
-            <TouchableOpacity
-              style={[styles.primaryBtn, { backgroundColor: THEMES[theme].success }]}
-              onPress={() => {
-                setSuccessModal({ ...successModal, visible: false });
-                if (successModal.entry?.device_id) {
-                  scrollToDevice(successModal.entry.device_id);
-                }
-              }}
-            >
-              <Text style={styles.primaryBtnText}>OK - Go to Card</Text>
-            </TouchableOpacity>
           </View>
         </View>
       </Modal>
