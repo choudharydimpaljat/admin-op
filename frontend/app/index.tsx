@@ -1054,6 +1054,10 @@ export default function Index() {
               setStoredConfig(null);
             }
           }
+        } else {
+          await AsyncStorage.setItem("fb_cfg", JSON.stringify(DEFAULT_CONFIG));
+          setStoredConfig(DEFAULT_CONFIG);
+          await initFirebase(DEFAULT_CONFIG);
         }
       } catch (e) {
         setStoredConfig(null);
