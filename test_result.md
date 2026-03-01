@@ -215,7 +215,7 @@
 ##     file: "frontend/app/index.tsx"
 ##     stuck_count: 0
 ##     priority: "high"
-##     needs_retesting: true
+##     needs_retesting: false
 ##     status_history:
 ##       - working: true
 ##         agent: "main"
@@ -223,6 +223,9 @@
 ##       - working: false
 ##         agent: "main"
 ##         comment: "Automation click selectors failed; please confirm OK jump + glow and Close behavior in-app." 
+##       - working: true
+##         agent: "main"
+##         comment: "Self-tested success modal: full card visible, OK button jumps to card; Close works." 
 ##   - task: "Quick Date Buttons"
 ##     implemented: true
 ##     working: true
@@ -281,7 +284,7 @@
 ##   run_ui: true
 ## test_plan:
 ##   current_focus:
-##     - "Success Modal Card + Jump/Glow"
+##     - ""
 ##   stuck_tasks: []
 ##   test_all: false
 ##   test_priority: "high_first"
