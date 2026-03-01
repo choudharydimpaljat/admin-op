@@ -1103,8 +1103,6 @@ export default function Index() {
     const tryAutoLogin = async () => {
       if (autoLoginAttempted.current || !storedConfig || !authRef.current) return;
       autoLoginAttempted.current = true;
-      const ts = await AsyncStorage.getItem("loginTimestamp");
-      if (!ts || Date.now() - Number(ts) > 86400000) return;
       const savedEmail = await AsyncStorage.getItem("savedEmail");
       const savedPassword = await AsyncStorage.getItem("savedPassword");
       if (!savedEmail || !savedPassword) return;
