@@ -1152,7 +1152,7 @@ export default function Index() {
     if (pendingScrollId.current) {
       attemptScrollToDevice(pendingScrollId.current);
     }
-  }, [filteredData, attemptScrollToDevice]);
+  }, [attemptScrollToDevice]);
 
   const loadCollections = useCallback(async () => {
     if (!dbRefCurrent.current) return;
