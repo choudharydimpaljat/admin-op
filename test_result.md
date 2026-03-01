@@ -225,11 +225,14 @@
 ##     file: "frontend/app/index.tsx"
 ##     stuck_count: 0
 ##     priority: "medium"
-##     needs_retesting: false
+##     needs_retesting: true
 ##     status_history:
 ##       - working: true
 ##         agent: "testing"
 ##         comment: "✅ Settings tab is accessible via bottom navigation. Contains theme switching options and other configuration settings. Theme options are visible and appear to be interactive. Settings UI is properly responsive on mobile viewports."
+##       - working: true
+##         agent: "main"
+##         comment: "Updated theme colors and card styling; needs retest."
 ## metadata:
 ##   created_by: "testing_agent"
 ##   version: "2.1"
