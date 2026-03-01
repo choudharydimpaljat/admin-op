@@ -1011,6 +1011,7 @@ export default function Index() {
   const autoLoginAttempted = useRef(false);
   const pendingScrollId = useRef(null);
   const lastSavedId = useRef(null);
+  const glowIntervalRef = useRef(null);
 
   const filteredData = useMemo(() => {
     let data = [...allData];
