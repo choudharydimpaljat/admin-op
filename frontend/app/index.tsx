@@ -1361,6 +1361,7 @@ export default function Index() {
       user,
       Allowoffline: allowOffline,
     };
+    lastSavedId.current = deviceId;
     let updated = [...allData];
     if (currentUpdateId) {
       const idx = updated.findIndex(
