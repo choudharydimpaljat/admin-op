@@ -919,9 +919,6 @@ export default function Index() {
     messagingSenderId: "",
     appId: "",
     adminEmail: "",
-    googleClientId: "",
-    googleAndroidClientId: "",
-    googleIosClientId: "",
   });
   const [setupError, setSetupError] = useState("");
   const [authUser, setAuthUser] = useState(null);
@@ -929,7 +926,7 @@ export default function Index() {
   const [authError, setAuthError] = useState("");
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
-  const [rememberLogin, setRememberLogin] = useState(false);
+  const [rememberLogin, setRememberLogin] = useState(true);
   const [activeTab, setActiveTab] = useState("devices");
   const [subTab, setSubTab] = useState("keys");
   const [collections, setCollections] = useState([]);
