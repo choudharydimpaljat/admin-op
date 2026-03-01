@@ -998,6 +998,41 @@ export default function Index() {
   const autoLoginAttempted = useRef(false);
   const pendingScrollId = useRef(null);
 
+  const filteredData = useMemo(() => {
+    let data = [...allData];
+    if (filterStatus === "active") {
+      data = data.filter((item) => !isExpired(item.expirydate));
+    }
+    if (filterStatus === "expired") {
+      data = data.filter((item) => isExpired(item.expirydate));
+    }
+    if (daysFilter !== "all") {
+      const today = new Date();
+      data = data.filter((item) => {
+        const exp = parseDate(item.expirydate);
+        if (!exp) return false;
+        const diffDays = Math.ceil(
+          (exp.getTime() - today.getTime()) / (1000 * 60 * 60 * 24)
+        );
+        if (daysFilter === "7") return diffDays > 0 && diffDays <= 7;
+        if (daysFilter === "15") return diffDays > 0 && diffDays <= 15;
+        if (daysFilter === "30") return diffDays > 0 && diffDays <= 30;
+        if (daysFilter === "30+") return diffDays > 30;
+        return true;
+      });
+    }
+    if (searchValue) {
+      const lower = searchValue.toLowerCase();
+      data = data.filter(
+        (item) =>
+          (item.device_id || item.id || "").toLowerCase().includes(lower) ||
+          (item.user || "").toLowerCase().includes(lower) ||
+          (item.key || "").toLowerCase().includes(lower)
+      );
+    }
+    return data;
+  }, [allData, filterStatus, daysFilter, searchValue]);
+
   const showToast = useCallback(
     (message) => {
       setToastMessage(message);
