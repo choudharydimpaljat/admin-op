@@ -1506,10 +1506,13 @@ export default function Index() {
     pendingScrollId.current = null;
   }, [allData, filterStatus, daysFilter, searchValue, startGlow]);
 
-  const scrollToDevice = (id) => {
-    pendingScrollId.current = id;
-    requestAnimationFrame(() => attemptScrollToDevice(id));
-  };
+  const scrollToDevice = useCallback(
+    (id) => {
+      pendingScrollId.current = id;
+      requestAnimationFrame(() => attemptScrollToDevice(id));
+    },
+    [attemptScrollToDevice]
+  );
 
   const scheduleScrollToDevice = useCallback(
     (id) => {
