@@ -1531,16 +1531,6 @@ export default function Index() {
     }
   };
 
-  const handleMoveCollection = (name, direction) => {
-    const idx = collections.indexOf(name);
-    if (idx === -1) return;
-    const newIdx = direction === "up" ? idx - 1 : idx + 1;
-    if (newIdx < 0 || newIdx >= collections.length) return;
-    const updated = [...collections];
-    [updated[idx], updated[newIdx]] = [updated[newIdx], updated[idx]];
-    setCollections(updated);
-  };
-
   const handleEmailLogin = async () => {
     if (!authRef.current || !storedConfig) {
       showToast("Firebase setup required");
