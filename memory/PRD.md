@@ -14,8 +14,10 @@ Convert the provided Firebase Admin HTML panel into a professional Expo mobile a
 - Prefilled Firebase config + admin email defaults (resettable)
 - Devices/Keys dashboard: collection selector, stats, search, filters, key cards
 - Key CRUD: add/update/delete, quick expiry buttons, offline toggle, position insert
+- Success modal shows full key card with OK/Close jump controls
 - JSON editor: view, format, save, copy, reset
 - Settings: Firebase config info, collection management, theme selection
+- Collections management: edit/delete (no reorder)
 - UI utilities: toasts, confirmation modal, success preview, scroll-to-top, fire theme overlay
 
 ## Backlog
