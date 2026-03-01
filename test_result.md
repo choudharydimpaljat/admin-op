@@ -203,6 +203,17 @@
 ##       - working: true
 ##         agent: "main"
 ##         comment: "Self-tested modal: paste button visible, generator wider, user+position row aligned, default expiry prefilled." 
+##   - task: "Success Modal Card + Jump/Glow"
+##     implemented: true
+##     working: true
+##     file: "frontend/app/index.tsx"
+##     stuck_count: 0
+##     priority: "high"
+##     needs_retesting: true
+##     status_history:
+##       - working: true
+##         agent: "main"
+##         comment: "Updated success modal to render full card with actions, added OK/Close, added safe scroll-to-card to avoid out-of-range." 
 ##   - task: "Quick Date Buttons"
 ##     implemented: true
 ##     working: true
