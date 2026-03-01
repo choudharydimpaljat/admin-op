@@ -9,8 +9,9 @@ Convert the provided Firebase Admin HTML panel into a professional Expo mobile a
 - **Database:** Firebase Realtime Database (configured at runtime by admin)
 
 ## Implemented Features
-- Firebase setup wizard (paste/parse config, manual fill, admin email, optional Google client IDs)
-- Admin authentication: Google sign-in and email/password with authorized email check
+- Firebase setup wizard (paste/parse config, manual fill, admin email)
+- Admin authentication: email/password with authorized email check
+- Prefilled Firebase config + admin email defaults (resettable)
 - Devices/Keys dashboard: collection selector, stats, search, filters, key cards
 - Key CRUD: add/update/delete, quick expiry buttons, offline toggle, position insert
 - JSON editor: view, format, save, copy, reset
