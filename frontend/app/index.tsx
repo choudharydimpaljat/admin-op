@@ -1426,11 +1426,47 @@ export default function Index() {
 
   const attemptScrollToDevice = useCallback((id) => {
     if (!id) return;
-    const index = filteredData.findIndex(
+    // Use current filteredData directly instead of from dependency
+    const currentFilteredData = (() => {
+      let data = [...allData];
+      if (filterStatus === "active") {
+        data = data.filter((item) => !isExpired(item.expirydate));
+      }
+      if (filterStatus === "expired") {
+        data = data.filter((item) => isExpired(item.expirydate));
+      }
+      if (daysFilter !== "all") {
+        const today = new Date();
+        data = data.filter((item) => {
+          const exp = parseDate(item.expirydate);
+          if (!exp) return false;
+          const diffDays = Math.ceil(
+            (exp.getTime() - today.getTime()) / (1000 * 60 * 60 * 24)
+          );
+          if (daysFilter === "7") return diffDays > 0 && diffDays <= 7;
+          if (daysFilter === "15") return diffDays > 0 && diffDays <= 15;
+          if (daysFilter === "30") return diffDays > 0 && diffDays <= 30;
+          if (daysFilter === "30+") return diffDays > 30;
+          return true;
+        });
+      }
+      if (searchValue) {
+        const lower = searchValue.toLowerCase();
+        data = data.filter(
+          (item) =>
+            (item.device_id || item.id || "").toLowerCase().includes(lower) ||
+            (item.user || "").toLowerCase().includes(lower) ||
+            (item.key || "").toLowerCase().includes(lower)
+        );
+      }
+      return data;
+    })();
+    
+    const index = currentFilteredData.findIndex(
       (item) => (item.device_id || item.id) === id
     );
-    if (index < 0 || index >= filteredData.length) return;
-    const safeIndex = Math.min(index, filteredData.length - 1);
+    if (index < 0 || index >= currentFilteredData.length) return;
+    const safeIndex = Math.min(index, currentFilteredData.length - 1);
     try {
       listRef.current?.scrollToIndex({
         index: safeIndex,
@@ -1443,7 +1479,7 @@ export default function Index() {
     setHighlightId(id);
     setTimeout(() => setHighlightId(null), 1500);
     pendingScrollId.current = null;
-  }, [filteredData]);
+  }, [allData, filterStatus, daysFilter, searchValue]);
 
   const scrollToDevice = (id) => {
     pendingScrollId.current = id;
