@@ -1435,6 +1435,27 @@ export default function Index() {
     setKeyForm((prev) => ({ ...prev, deviceId: text.trim() }));
   };
 
+  const startGlow = useCallback((id) => {
+    if (!id) return;
+    if (glowIntervalRef.current) {
+      clearInterval(glowIntervalRef.current);
+      glowIntervalRef.current = null;
+    }
+    let visible = true;
+    let elapsed = 0;
+    setHighlightId(id);
+    glowIntervalRef.current = setInterval(() => {
+      visible = !visible;
+      setHighlightId(visible ? id : null);
+      elapsed += 500;
+      if (elapsed >= 5000) {
+        clearInterval(glowIntervalRef.current);
+        glowIntervalRef.current = null;
+        setHighlightId(null);
+      }
+    }, 500);
+  }, []);
+
   const attemptScrollToDevice = useCallback((id) => {
     if (!id) return;
     // Get current filtered data dynamically without circular dependency
