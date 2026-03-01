@@ -1398,7 +1398,7 @@ export default function Index() {
       showToast("Collection already exists");
       return;
     }
-    const defaultData: KeyEntry[] = [
+    const defaultData = [
       {
         Allowoffline: false,
         device_id: "b7fcd04f7c59af3d",
@@ -1448,7 +1448,7 @@ export default function Index() {
     }
   };
 
-  const handleDeleteCollection = async (name: string) => {
+  const handleDeleteCollection = async (name) => {
     if (collections.length <= 1) {
       showToast("Cannot delete last collection");
       return;
@@ -1467,7 +1467,7 @@ export default function Index() {
     }
   };
 
-  const handleMoveCollection = (name: string, direction: "up" | "down") => {
+  const handleMoveCollection = (name, direction) => {
     const idx = collections.indexOf(name);
     if (idx === -1) return;
     const newIdx = direction === "up" ? idx - 1 : idx + 1;
@@ -1531,7 +1531,7 @@ export default function Index() {
       await AsyncStorage.setItem("loginTimestamp", Date.now().toString());
       setAuthUser(authResult.user);
       showToast("Login successful");
-    } catch (e: any) {
+    } catch (e) {
       setAuthError(e?.message || "Login failed");
     } finally {
       setAuthLoading(false);
@@ -1571,7 +1571,7 @@ export default function Index() {
       }
       setAuthUser(result.user);
       showToast("Login successful");
-    } catch (e: any) {
+    } catch (e) {
       setAuthError(e?.message || "Login failed");
     } finally {
       setAuthLoading(false);
@@ -1626,7 +1626,7 @@ export default function Index() {
       setSetupError("Enter a valid admin email");
       return;
     }
-    const payload: StoredConfig = {
+    const payload = {
       fc: {
         apiKey,
         authDomain,
@@ -1667,7 +1667,6 @@ export default function Index() {
     keys.forEach((key) => {
       const match = text.match(new RegExp(`${key}\\s*:\\s*[\"'](.*?)[\"']`));
       if (match) {
-        // @ts-ignore
         updated[key] = match[1];
         found += 1;
       }
@@ -1681,13 +1680,13 @@ export default function Index() {
     }
   };
 
-  const handleQuickDate = (days: number) => {
+  const handleQuickDate = (days) => {
     const date = new Date();
     date.setDate(date.getDate() + days);
     setKeyForm((prev) => ({ ...prev, expiry: formatDate(date) }));
   };
 
-  const handleAdjustDate = (days: number) => {
+  const handleAdjustDate = (days) => {
     if (!keyForm.expiry) return;
     const parsed = parseDate(keyForm.expiry);
     if (!parsed) return;
@@ -1695,7 +1694,7 @@ export default function Index() {
     setKeyForm((prev) => ({ ...prev, expiry: formatDate(parsed) }));
   };
 
-  const handleUsernameInput = (value: string) => {
+  const handleUsernameInput = (value) => {
     setKeyForm((prev) => ({ ...prev, user: value }));
     if (!value) {
       setUserSuggestions([]);
@@ -1705,7 +1704,7 @@ export default function Index() {
       ...new Set(
         allData
           .map((item) => item.user)
-          .filter((name): name is string =>
+          .filter((name) =>
             Boolean(name && name.toLowerCase().includes(value.toLowerCase()))
           )
       ),
@@ -1713,7 +1712,7 @@ export default function Index() {
     setUserSuggestions(matches);
   };
 
-  const handlePositionInput = (value: string) => {
+  const handlePositionInput = (value) => {
     setKeyForm((prev) => ({ ...prev, position: value }));
     if (!value || /^\d+$/.test(value)) {
       setPositionSuggestions([]);
@@ -1734,12 +1733,12 @@ export default function Index() {
     setPositionSuggestions(matches);
   };
 
-  const handleThemeChange = async (next: ThemeName) => {
+  const handleThemeChange = async (next) => {
     setTheme(next);
     await AsyncStorage.setItem("theme", next);
   };
 
-  const renderDeviceCard = ({ item, index }: { item: KeyEntry; index: number }) => {
+  const renderDeviceCard = ({ item, index }) => {
     const id = item.device_id || item.id || "";
     const expired = isExpired(item.expirydate);
     const position = allData.findIndex(
