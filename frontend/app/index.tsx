@@ -1940,7 +1940,7 @@ export default function Index() {
                         <Text style={styles.inputLabel}>{field.label}</Text>
                         <TextInput
                           style={styles.input}
-                          value={(setupForm as any)[field.key]}
+                          value={setupForm[field.key]}
                           onChangeText={(value) =>
                             setSetupForm((prev) => ({ ...prev, [field.key]: value }))
                           }
@@ -2188,7 +2188,7 @@ export default function Index() {
                           styles.subTab,
                           subTab === tab.key && styles.subTabActive,
                         ]}
-                        onPress={() => setSubTab(tab.key as any)}
+                        onPress={() => setSubTab(tab.key)}
                       >
                         <Text
                           style={[
@@ -2227,7 +2227,7 @@ export default function Index() {
                           styles.filterTab,
                           filterStatus === filter.key && styles.filterTabActive,
                         ]}
-                        onPress={() => setFilterStatus(filter.key as any)}
+                        onPress={() => setFilterStatus(filter.key)}
                       >
                         <Text
                           style={[
@@ -2348,7 +2348,7 @@ export default function Index() {
                   <Pressable
                     key={tab.key}
                     style={[styles.subTab, subTab === tab.key && styles.subTabActive]}
-                    onPress={() => setSubTab(tab.key as any)}
+                    onPress={() => setSubTab(tab.key)}
                   >
                     <Text
                       style={[
@@ -2502,7 +2502,7 @@ export default function Index() {
                   { key: "gold", label: "Gold", colors: ["#ffc107", "#ff9800"] },
                   { key: "cyber", label: "Cyber", colors: ["#00f5ff", "#0080ff"] },
                   { key: "firebase", label: "Firebase", colors: ["#FF6D00", "#DD2C00"] },
-                ] as { key: ThemeName; label: string; colors: string[] }[]).map((option) => (
+                ]).map((option) => (
                   <Pressable
                     key={option.key}
                     style={[
