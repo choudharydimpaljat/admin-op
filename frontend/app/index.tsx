@@ -1384,6 +1384,12 @@ export default function Index() {
     showToast("Copied");
   };
 
+  const handlePasteDeviceId = async () => {
+    const text = await Clipboard.getStringAsync();
+    if (!text) return;
+    setKeyForm((prev) => ({ ...prev, deviceId: text.trim() }));
+  };
+
   const scrollToDevice = (id) => {
     const index = filteredData.findIndex(
       (item) => (item.device_id || item.id) === id
