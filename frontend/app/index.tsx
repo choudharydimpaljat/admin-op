@@ -1368,11 +1368,12 @@ export default function Index() {
       if (idx !== -1) updated.splice(idx, 1);
     }
     updated.splice(pos - 1, 0, entry);
+    const savedEntry = updated[pos - 1];
     const ok = await saveData(updated);
     if (ok) {
       setSuccessModal({
         visible: true,
-        entry,
+        entry: savedEntry || entry,
         position: pos,
         isUpdate: Boolean(currentUpdateId),
       });
