@@ -1424,7 +1424,7 @@ export default function Index() {
     setKeyForm((prev) => ({ ...prev, deviceId: text.trim() }));
   };
 
-  const attemptScrollToDevice = (id) => {
+  const attemptScrollToDevice = useCallback((id) => {
     if (!id) return;
     const index = filteredData.findIndex(
       (item) => (item.device_id || item.id) === id
@@ -1434,7 +1434,7 @@ export default function Index() {
     setHighlightId(id);
     setTimeout(() => setHighlightId(null), 1500);
     pendingScrollId.current = null;
-  };
+  }, [filteredData]);
 
   const scrollToDevice = (id) => {
     pendingScrollId.current = id;
