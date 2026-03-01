@@ -220,6 +220,9 @@
 ##       - working: true
 ##         agent: "main"
 ##         comment: "Updated success modal to render full card with actions, added OK/Close, added safe scroll-to-card to avoid out-of-range." 
+##       - working: false
+##         agent: "main"
+##         comment: "Automation click selectors failed; please confirm OK jump + glow and Close behavior in-app." 
 ##   - task: "Quick Date Buttons"
 ##     implemented: true
 ##     working: true
