@@ -2429,7 +2429,7 @@ export default function Index() {
       <View style={styles.header}>
         <View style={styles.headerTitle}>
           <MaterialCommunityIcons name="firebase" size={20} color="white" />
-          <Text style={styles.headerTitleText}>OP Admin Panel</Text>
+          <Text style={styles.headerTitleText}>Admin OP</Text>
         </View>
         <View style={styles.userInfo}>
           <View>
