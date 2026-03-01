@@ -382,7 +382,8 @@ const createStyles = (theme) =>
       borderRadius: 12,
       borderWidth: 1,
       borderColor: theme.border,
-      zIndex: 10,
+      zIndex: 60,
+      elevation: 12,
     },
     dropDownItem: {
       paddingVertical: 10,
