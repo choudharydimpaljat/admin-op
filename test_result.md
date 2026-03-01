@@ -169,11 +169,14 @@
 ##     file: "frontend/app/index.tsx"
 ##     stuck_count: 0
 ##     priority: "medium"
-##     needs_retesting: false
+##     needs_retesting: true
 ##     status_history:
 ##       - working: true
 ##         agent: "testing"
 ##         comment: "✅ Keys list shows appropriate empty state when no data is present. Empty state indicators and add key button (FAB) are visible and properly positioned for mobile usage."
+##       - working: true
+##         agent: "main"
+##         comment: "Keys list now scrolls independently with sticky header; requires retest."
 ##   - task: "Add Key Modal"
 ##     implemented: true
 ##     working: true
