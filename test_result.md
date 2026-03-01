@@ -211,11 +211,14 @@
 ##     file: "frontend/app/index.tsx"
 ##     stuck_count: 0
 ##     priority: "medium"
-##     needs_retesting: false
+##     needs_retesting: true
 ##     status_history:
 ##       - working: true
 ##         agent: "testing"
 ##         comment: "✅ JSON tab is accessible from the main interface. Shows JSON editor/viewer for raw data manipulation. Tab switching between Keys and JSON views works correctly on mobile devices."
+##       - working: true
+##         agent: "main"
+##         comment: "Header now sticky; JSON area scrolls below. Needs retest."
 ##   - task: "Settings Tab"
 ##     implemented: true
 ##     working: true
