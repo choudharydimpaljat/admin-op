@@ -1911,7 +1911,11 @@ export default function Index() {
     const hasFullYear = parts[2] && parts[2].length === 4;
     return (
       <View
-        style={[styles.deviceCard, expired && styles.deviceCardExpired]}
+        style={[
+          styles.deviceCard,
+          styles.successCard,
+          expired && styles.deviceCardExpired,
+        ]}
       >
         <View
           style={[
