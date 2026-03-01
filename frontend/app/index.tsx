@@ -46,36 +46,7 @@ import { getReactNativePersistence } from "firebase/auth/react-native";
 
 WebBrowser.maybeCompleteAuthSession();
 
-type FirebaseClientConfig = {
-  apiKey: string;
-  authDomain: string;
-  databaseURL: string;
-  projectId: string;
-  storageBucket?: string;
-  messagingSenderId?: string;
-  appId?: string;
-};
-
-type StoredConfig = {
-  fc: FirebaseClientConfig;
-  email: string;
-  googleClientId?: string;
-  googleAndroidClientId?: string;
-  googleIosClientId?: string;
-};
-
-type KeyEntry = {
-  device_id?: string;
-  id?: string;
-  key?: string;
-  expirydate?: string;
-  user?: string;
-  Allowoffline?: boolean;
-};
-
-type ThemeName = "cream" | "gold" | "cyber" | "firebase";
-
-const THEMES: Record<ThemeName, any> = {
+const THEMES = {
   cream: {
     bgPrimary: "#f0f4f8",
     bgSecondary: "#e1e8ed",
