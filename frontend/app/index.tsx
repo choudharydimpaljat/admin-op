@@ -1533,6 +1533,14 @@ export default function Index() {
     }
   }, [attemptScrollToDevice]);
 
+  useEffect(() => {
+    return () => {
+      if (glowIntervalRef.current) {
+        clearInterval(glowIntervalRef.current);
+      }
+    };
+  }, []);
+
   const handleSaveJson = async () => {
     try {
       const parsed = JSON.parse(rawJson);
