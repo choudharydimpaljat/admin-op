@@ -2513,13 +2513,21 @@ export default function Index() {
                 </Text>
                 <View style={{ marginBottom: 10 }}>
                   <Text style={styles.inputLabel}>Device ID</Text>
-                  <TextInput
-                    style={styles.input}
-                    value={keyForm.deviceId}
-                    onChangeText={(value) =>
-                      setKeyForm((prev) => ({ ...prev, deviceId: value }))
-                    }
-                  />
+                  <View style={{ flexDirection: "row", gap: 6 }}>
+                    <TextInput
+                      style={[styles.input, { flex: 1 }]}
+                      value={keyForm.deviceId}
+                      onChangeText={(value) =>
+                        setKeyForm((prev) => ({ ...prev, deviceId: value }))
+                      }
+                    />
+                    <TouchableOpacity
+                      style={[styles.primaryBtn, { paddingHorizontal: 16, minWidth: 72 }]}
+                      onPress={handlePasteDeviceId}
+                    >
+                      <MaterialCommunityIcons name="content-paste" size={16} color="white" />
+                    </TouchableOpacity>
+                  </View>
                 </View>
                 {duplicateDevice && (
                   <View style={styles.warningBox}>
@@ -2546,7 +2554,7 @@ export default function Index() {
                       }
                     />
                     <TouchableOpacity
-                      style={[styles.primaryBtn, { paddingHorizontal: 12 }]}
+                      style={[styles.primaryBtn, { paddingHorizontal: 18, minWidth: 72 }]}
                       onPress={handleGenerateKey}
                     >
                       <MaterialCommunityIcons name="refresh" size={16} color="white" />
