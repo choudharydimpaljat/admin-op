@@ -1995,6 +1995,16 @@ export default function Index() {
     );
   };
 
+  const modalEntry = useMemo(() => {
+    if (successModal.entry) return successModal.entry;
+    if (lastSavedId.current) {
+      return allData.find(
+        (item) => (item.device_id || item.id) === lastSavedId.current
+      );
+    }
+    return null;
+  }, [successModal.entry, allData]);
+
   const renderDeviceHeader = (showFilters) => (
     <View style={{ zIndex: 20 }}>
       <Text style={styles.sectionTitle}>Collection</Text>
