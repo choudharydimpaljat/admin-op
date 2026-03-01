@@ -1426,8 +1426,8 @@ export default function Index() {
 
   const attemptScrollToDevice = useCallback((id) => {
     if (!id) return;
-    // Use current filteredData directly instead of from dependency
-    const currentFilteredData = (() => {
+    // Get current filtered data dynamically without circular dependency
+    const getCurrentFilteredData = () => {
       let data = [...allData];
       if (filterStatus === "active") {
         data = data.filter((item) => !isExpired(item.expirydate));
@@ -1460,8 +1460,9 @@ export default function Index() {
         );
       }
       return data;
-    })();
+    };
     
+    const currentFilteredData = getCurrentFilteredData();
     const index = currentFilteredData.findIndex(
       (item) => (item.device_id || item.id) === id
     );
