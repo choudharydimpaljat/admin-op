@@ -1509,10 +1509,9 @@ export default function Index() {
     } catch (e) {
       listRef.current?.scrollToOffset({ offset: 0, animated: true });
     }
-    setHighlightId(id);
-    setTimeout(() => setHighlightId(null), 1500);
+    startGlow(id);
     pendingScrollId.current = null;
-  }, [allData, filterStatus, daysFilter, searchValue]);
+  }, [allData, filterStatus, daysFilter, searchValue, startGlow]);
 
   const scrollToDevice = (id) => {
     pendingScrollId.current = id;
