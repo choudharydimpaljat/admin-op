@@ -968,6 +968,7 @@ export default function Index() {
   const listRef = useRef(null);
   const authRef = useRef(null);
   const dbRefCurrent = useRef(null);
+  const autoLoginAttempted = useRef(false);
 
   const showToast = useCallback(
     (message) => {
@@ -1087,6 +1088,36 @@ export default function Index() {
       }
     };
     loadSavedLogin();
+  }, [storedConfig]);
+
+  useEffect(() => {
+    const tryAutoLogin = async () => {
+      if (autoLoginAttempted.current || !storedConfig || !authRef.current) return;
+      autoLoginAttempted.current = true;
+      const ts = await AsyncStorage.getItem("loginTimestamp");
+      if (!ts || Date.now() - Number(ts) > 86400000) return;
+      const savedEmail = await AsyncStorage.getItem("savedEmail");
+      const savedPassword = await AsyncStorage.getItem("savedPassword");
+      if (!savedEmail || !savedPassword) return;
+      try {
+        setAuthLoading(true);
+        const result = await signInWithEmailAndPassword(
+          authRef.current,
+          savedEmail.trim(),
+          savedPassword.trim()
+        );
+        if (result.user.email !== storedConfig.email) {
+          await signOut(authRef.current);
+          return;
+        }
+        setAuthUser(result.user);
+      } catch (e) {
+        setAuthError("Auto login failed");
+      } finally {
+        setAuthLoading(false);
+      }
+    };
+    tryAutoLogin();
   }, [storedConfig]);
 
   const loadCollections = useCallback(async () => {
