@@ -1511,6 +1511,22 @@ export default function Index() {
     requestAnimationFrame(() => attemptScrollToDevice(id));
   };
 
+  const scheduleScrollToDevice = useCallback(
+    (id) => {
+      if (!id) return;
+      let attempts = 0;
+      const run = () => {
+        attempts += 1;
+        scrollToDevice(id);
+        if (attempts < 3) {
+          setTimeout(run, 600);
+        }
+      };
+      run();
+    },
+    [scrollToDevice]
+  );
+
   useEffect(() => {
     if (pendingScrollId.current) {
       attemptScrollToDevice(pendingScrollId.current);
