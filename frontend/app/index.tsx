@@ -1126,7 +1126,7 @@ export default function Index() {
       collectionRef,
       (snapshot) => {
         const val = snapshot.val();
-        let dataArray: KeyEntry[] = [];
+        let dataArray = [];
         if (Array.isArray(val)) {
           dataArray = val.filter((item) => item !== null);
         } else if (val && typeof val === "object") {
@@ -1151,7 +1151,7 @@ export default function Index() {
   }, [authUser, loadCollections]);
 
   const saveData = useCallback(
-    async (data: KeyEntry[]) => {
+    async (data) => {
       if (!dbRefCurrent.current || !currentCollection) return false;
       setFirebaseStatus("Saving...");
       try {
