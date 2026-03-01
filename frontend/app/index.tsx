@@ -101,14 +101,14 @@ const THEMES = {
   },
 };
 
-const formatDate = (date: Date) => {
+const formatDate = (date) => {
   const dd = String(date.getDate()).padStart(2, "0");
   const mm = String(date.getMonth() + 1).padStart(2, "0");
   const yyyy = date.getFullYear();
   return `${dd}-${mm}-${yyyy}`;
 };
 
-const parseDate = (value?: string) => {
+const parseDate = (value) => {
   if (!value) return null;
   const parts = value.split("-");
   if (parts.length !== 3) return null;
@@ -116,14 +116,14 @@ const parseDate = (value?: string) => {
   return new Date(Number(yy), Number(mm) - 1, Number(dd));
 };
 
-const isExpired = (dateValue?: string) => {
+const isExpired = (dateValue) => {
   const parsed = parseDate(dateValue);
   if (!parsed) return false;
   const now = new Date();
   return parsed < new Date(now.getFullYear(), now.getMonth(), now.getDate());
 };
 
-const createStyles = (theme: any) =>
+const createStyles = (theme) =>
   StyleSheet.create({
     screen: {
       flex: 1,
@@ -825,7 +825,7 @@ const createStyles = (theme: any) =>
     },
   });
 
-const FireOverlay = ({ visible }: { visible: boolean }) => {
+const FireOverlay = ({ visible }) => {
   const flames = useRef([
     new Animated.Value(0),
     new Animated.Value(0),
