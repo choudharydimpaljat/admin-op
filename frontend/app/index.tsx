@@ -1841,6 +1841,104 @@ export default function Index() {
     );
   };
 
+  const renderSuccessCard = (entry, position) => {
+    if (!entry) return null;
+    const id = entry.device_id || entry.id || "";
+    const expired = isExpired(entry.expirydate);
+    const parts = (entry.expirydate || "01-01-2026").split("-");
+    const hasFullYear = parts[2] && parts[2].length === 4;
+    return (
+      <View
+        style={[styles.deviceCard, expired && styles.deviceCardExpired]}
+      >
+        <View
+          style={[
+            styles.positionTag,
+            expired && styles.positionTagExpired,
+          ]}
+        >
+          <Text style={styles.positionText}>#{position}</Text>
+        </View>
+        <Text
+          style={[styles.deviceId, expired && styles.deviceIdExpired]}
+          numberOfLines={1}
+        >
+          {id}
+        </Text>
+        <Text style={styles.userNameCard} numberOfLines={1}>
+          {entry.user || "N/A"}
+        </Text>
+        <Pressable onPress={() => handleCopy(entry.key)}>
+          <Text
+            style={[styles.keyValue, expired && styles.keyValueExpired]}
+            numberOfLines={1}
+          >
+            {entry.key || "N/A"}
+          </Text>
+        </Pressable>
+        <View style={styles.metaRow}>
+          <Text style={styles.expiryText}>{entry.expirydate || "N/A"}</Text>
+          <Text
+            style={[
+              styles.statusBadge,
+              entry.Allowoffline ? styles.badgeOffline : styles.badgeOnline,
+            ]}
+          >
+            {entry.Allowoffline ? "OFFLINE" : "ONLINE"}
+          </Text>
+        </View>
+        <View style={styles.cardActions}>
+          <TouchableOpacity
+            style={[styles.actionBtn, styles.editBtn]}
+            onPress={() => {
+              setSuccessModal({ ...successModal, visible: false });
+              openKeyModal(entry);
+            }}
+          >
+            <MaterialCommunityIcons name="pencil" size={16} color="#3498db" />
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[styles.actionBtn, styles.deleteBtn]}
+            onPress={async () => {
+              const ok = await confirmAction("Delete Key", `Delete device ${id}?`);
+              if (ok) {
+                await handleDeleteKey(id);
+                setSuccessModal({ ...successModal, visible: false });
+              }
+            }}
+          >
+            <MaterialCommunityIcons
+              name="trash-can"
+              size={16}
+              color={THEMES[theme].danger}
+            />
+          </TouchableOpacity>
+          <View>
+            {expired ? (
+              <View style={styles.expiredLabel}>
+                <Text style={styles.expiredLabelText}>EXPIRED</Text>
+              </View>
+            ) : null}
+            <Pressable
+              style={[
+                styles.toggleSwitch,
+                hasFullYear && styles.toggleSwitchActive,
+              ]}
+              onPress={() => handleToggleYear(id, !hasFullYear)}
+            >
+              <View
+                style={[
+                  styles.toggleKnob,
+                  hasFullYear && styles.toggleKnobActive,
+                ]}
+              />
+            </Pressable>
+          </View>
+        </View>
+      </View>
+    );
+  };
+
   const renderDeviceHeader = (showFilters) => (
     <View style={{ zIndex: 20 }}>
       <Text style={styles.sectionTitle}>Collection</Text>
