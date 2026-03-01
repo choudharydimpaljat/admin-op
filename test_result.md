@@ -144,11 +144,14 @@
 ##     file: "frontend/app/index.tsx"
 ##     stuck_count: 0
 ##     priority: "high"
-##     needs_retesting: false
+##     needs_retesting: true
 ##     status_history:
 ##       - working: true
 ##         agent: "testing"
 ##         comment: "✅ Login screen appears after setup completion (or directly if config exists). Contains Google Sign-in button, email/password fields, 'Remember my login' checkbox, and 'Reset Firebase Config' option. UI is properly responsive on mobile devices. Note: Actual authentication cannot be tested without real Firebase credentials."
+##       - working: true
+##         agent: "main"
+##         comment: "Removed Google login, prefilled Firebase config, and enabled auto-login with saved credentials; needs UI retest."
 ##   - task: "Bottom Navigation"
 ##     implemented: true
 ##     working: true
